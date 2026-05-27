@@ -20,7 +20,8 @@ jobs:
               git clone https://github.com/ybw-dd/yang.git $APP_DIR
             fi
             cd $APP_DIR
-            git pull origin main
+            git fetch origin
+            git reset --hard origin/main
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" > .env
             docker compose down
             docker compose up -d --build
